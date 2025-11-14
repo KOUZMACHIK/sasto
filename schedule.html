@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Athlos Jiu-Jitsu - Premier Brazilian Jiu-Jitsu academy in Paphos, Cyprus. Classes for all ages and skill levels. Join our welcoming community today.">
+<script src="https://kit.fontawesome.com/6dab878f26.js" crossorigin="anonymous"></script>
+<title>Athlos Jiu-Jitsu | Brazilian Jiu-Jitsu in Paphos, Cyprus</title>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+        }
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background: #dcdee0;
+color: #000;
+min-height: 100vh;
+        }
+header {
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+padding: 20px 30px;
+background: #ffffff;
+border-bottom: 2px solid #000;
+position: sticky;
+top: 0;
+z-index: 1000;
+box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+.logo-container {
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 0px;
+        }
+.logo {
+width: 100px;
+height: 100px;
+display: flex;
+align-items: center;
+justify-content: center;
+        }
+.logo img {
+max-width: 100%;
+max-height: 100%;
+object-fit: contain;
+        }
+h1 {
+font-size: 0.58rem;
+font-weight: 900;
+letter-spacing: 0.3px;
+text-transform: uppercase;
+color: #000;
+white-space: nowrap;
+width: 100px;
+margin-top: -10px;
+        }
+nav {
+display: flex;
+gap: 50px;
+align-items: center;
+        }
+nav a {
+color: #000;
+text-decoration: none;
+font-size: 1.3rem;
+font-weight: 600;
+text-transform: uppercase;
+transition: color 0.3s ease;
+position: relative;
+        }
+nav a:hover {
+color: #555;
+        }
+nav a::after {
+content: '';
+position: absolute;
+bottom: -5px;
+left: 0;
+width: 0;
+height: 2px;
+background: #000;
+transition: width 0.3s ease;
+        }
+nav a:hover::after {
+width: 100%;
+        }
+.menu-toggle {
+display: none;
+flex-direction: column;
+cursor: pointer;
+background: none;
+border: none;
+padding: 5px;
+        }
+.menu-toggle span {
+width: 25px;
+height: 3px;
+background-color: #000;
+margin: 3px 0;
+transition: 0.3s;
+        }
+.menu-toggle.active span:nth-child(1) {
+transform: rotate(-45deg) translate(-5px, 6px);
+        }
+.menu-toggle.active span:nth-child(2) {
+opacity: 0;
+        }
+.menu-toggle.active span:nth-child(3) {
+transform: rotate(45deg) translate(-5px, -6px);
+        }
+.close-menu {
+display: none;
+position: absolute;
+top: 20px;
+right: 20px;
+font-size: 2rem;
+background: none;
+border: none;
+cursor: pointer;
+color: #000;
+font-weight: 300;
+line-height: 1;
+        }
+/* Hero Section */
+.hero-section {
+background: linear-gradient(135deg, #000000 0%, #333333 100%);
+color: #ffffff;
+padding: 100px 20px;
+text-align: center;
+        }
+.hero-section h2 {
+font-size: 3.5rem;
+font-weight: 900;
+margin-bottom: 20px;
+text-transform: uppercase;
+letter-spacing: 3px;
+        }
+.hero-section p {
+font-size: 1.5rem;
+margin-bottom: 40px;
+max-width: 800px;
+margin-left: auto;
+margin-right: auto;
+        }
+.cta-button {
+display: inline-block;
+padding: 18px 45px;
+background: #ffffff;
+color: #000;
+text-decoration: none;
+font-size: 1.2rem;
+font-weight: 700;
+text-transform: uppercase;
+border-radius: 5px;
+transition: all 0.3s ease;
+border: 2px solid #ffffff;
+        }
+.cta-button:hover {
+background: transparent;
+color: #ffffff;
+transform: translateY(-3px);
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+/* Scroll Animation Styles */
+.fade-in {
+opacity: 0;
+transform: translateY(30px);
+transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+.fade-in.visible {
+opacity: 1;
+transform: translateY(0);
+        }
+.slide-left {
+opacity: 0;
+transform: translateX(-50px);
+transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+.slide-left.visible {
+opacity: 1;
+transform: translateX(0);
+        }
+.slide-right {
+opacity: 0;
+transform: translateX(50px);
+transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+.slide-right.visible {
+opacity: 1;
+transform: translateX(0);
+        }
+.zoom-in {
+opacity: 0;
+transform: scale(0.8);
+transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+.zoom-in.visible {
+opacity: 1;
+transform: scale(1);
+        }
+.coaches-section {
+max-width: 1400px;
+margin: 80px auto;
+padding: 0 20px;
+        }
+.coaches-container {
+display: flex;
+justify-content: center;
+gap: 80px;
+flex-wrap: wrap;
+        }
+.coach-card {
+text-align: center;
+max-width: 500px;
+flex: 1;
+        }
+.coach-image {
+width: 200px;
+height: 200px;
+border-radius: 50%;
+border: 3px solid #000;
+background: #f5f5f5;
+margin: 0 auto 30px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 3rem;
+color: #000;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+transition: transform 0.3s ease;
+overflow: hidden;
+        }
+.coach-image:hover {
+transform: scale(1.05);
+        }
+.coach-image img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+        }
+.coach-info {
+background: #ffffff;
+border: 2px solid #000;
+border-radius: 10px;
+padding: 30px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+min-height: 280px;
+display: flex;
+flex-direction: column;
+        }
+.coach-name {
+font-size: 1.8rem;
+font-weight: 700;
+color: #000;
+margin-bottom: 10px;
+        }
+.coach-title {
+font-size: 1.1rem;
+color: #555;
+margin-bottom: 20px;
+font-style: italic;
+        }
+.coach-description {
+font-size: 1rem;
+line-height: 1.6;
+color: #333;
+        }
+.about-bjj {
+max-width: 1200px;
+margin: 60px auto;
+padding: 40px 20px;
+text-align: center;
+        }
+.about-bjj h2 {
+font-size: 2.5rem;
+font-weight: 900;
+text-transform: uppercase;
+color: #000;
+margin-bottom: 30px;
+letter-spacing: 2px;
+        }
+.about-bjj p {
+font-size: 1.2rem;
+line-height: 1.8;
+color: #333;
+max-width: 900px;
+margin: 0 auto;
+        }
+/* Schedule Section */
+.schedule-section {
+max-width: 1200px;
+margin: 80px auto;
+padding: 40px 20px;
+background: #ffffff;
+border-radius: 15px;
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+.schedule-section h2 {
+font-size: 2.5rem;
+font-weight: 900;
+text-transform: uppercase;
+color: #000;
+margin-bottom: 40px;
+letter-spacing: 2px;
+text-align: center;
+        }
+.schedule-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 30px;
+        }
+.schedule-card {
+background: #f8f9fa;
+border: 2px solid #000;
+border-radius: 10px;
+padding: 25px;
+text-align: center;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+.schedule-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+.schedule-day {
+font-size: 1.5rem;
+font-weight: 700;
+color: #000;
+margin-bottom: 15px;
+text-transform: uppercase;
+        }
+.schedule-time {
+font-size: 1rem;
+color: #555;
+margin-bottom: 10px;
+line-height: 1.6;
+        }
+.schedule-class {
+font-size: 1rem;
+color: #333;
+font-weight: 600;
+background: #ffffff;
+padding: 8px 15px;
+border-radius: 5px;
+margin-top: 10px;
+display: inline-block;
+        }
+.gallery-section {
+max-width: 100%;
+margin: 80px auto;
+padding: 0 20px;
+overflow: hidden;
+        }
+.gallery-section h2 {
+font-size: 2.5rem;
+font-weight: 900;
+text-transform: uppercase;
+color: #000;
+margin-bottom: 30px;
+letter-spacing: 2px;
+text-align: center;
+        }
+.gallery-container {
+display: flex;
+gap: 20px;
+padding: 20px 0;
+animation: scroll 40s linear infinite;
+width: max-content;
+        }
+
+@keyframes scroll {
+            0% {
+transform: translateX(0);
+            }
+            100% {
+transform: translateX(-50%);
+            }
+        }
+.gallery-container:hover {
+animation-play-state: paused;
+        }
+.gallery-item {
+flex: 0 0 auto;
+width: 350px;
+height: 350px;
+border: 3px solid #000;
+border-radius: 10px;
+overflow: hidden;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+background: #f5f5f5;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: transform 0.3s ease;
+        }
+.gallery-item:hover {
+transform: scale(1.05);
+        }
+.gallery-item img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+        }
+.inclusive-section {
+max-width: 1200px;
+margin: 60px auto;
+padding: 40px 20px;
+text-align: center;
+        }
+.inclusive-section h2 {
+font-size: 2.5rem;
+font-weight: 900;
+text-transform: uppercase;
+color: #000;
+margin-bottom: 30px;
+letter-spacing: 2px;
+        }
+.inclusive-section p {
+font-size: 1.2rem;
+line-height: 1.8;
+color: #333;
+max-width: 900px;
+margin: 0 auto;
+        }
+/* Contact Section */
+.contact-section {
+max-width: 1200px;
+margin: 80px auto 40px;
+padding: 60px 20px;
+background: #ffffff;
+border-radius: 15px;
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+.contact-section h2 {
+font-size: 2.5rem;
+font-weight: 900;
+text-transform: uppercase;
+color: #000;
+margin-bottom: 40px;
+letter-spacing: 2px;
+text-align: center;
+        }
+.contact-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 40px;
+        }
+.contact-card {
+text-align: center;
+padding: 30px;
+background: #f8f9fa;
+border: 2px solid #000;
+border-radius: 10px;
+transition: transform 0.3s ease;
+        }
+.contact-card:hover {
+transform: translateY(-5px);
+        }
+.contact-icon {
+font-size: 3rem;
+margin-bottom: 20px;
+        }
+.contact-card h3 {
+font-size: 1.5rem;
+font-weight: 700;
+color: #000;
+margin-bottom: 15px;
+text-transform: uppercase;
+        }
+.contact-card p {
+font-size: 1.1rem;
+color: #333;
+margin: 10px 0;
+        }
+.contact-card a {
+color: #000;
+text-decoration: none;
+font-weight: 600;
+transition: color 0.3s ease;
+        }
+.contact-card a:hover {
+color: #555;
+        }
+.map-container {
+margin-top: 40px;
+border-radius: 10px;
+overflow: hidden;
+border: 3px solid #000;
+height: 400px;
+        }
+.map-container iframe {
+width: 100%;
+height: 100%;
+border: none;
+        }
+footer {
+background: #000;
+color: #ffffff;
+text-align: center;
+padding: 30px 20px;
+margin-top: 60px;
+        }
+footer p {
+font-size: 1rem;
+        }
+footer p a {
+color: #ffffff;
+text-decoration: none;
+        }
+footer p a:hover {
+color: #cccccc;
+        }
+.social-links {
+margin-top: 20px;
+display: flex;
+justify-content: center;
+gap: 20px;
+        }
+.social-links a {
+color: #ffffff;
+font-size: 1.8rem;
+transition: transform 0.3s ease;
+display: inline-block;
+        }
+.social-links a:hover {
+transform: scale(1.2);
+        }
+@media (max-width: 768px) {
+header {
+padding: 20px;
+            }
+.logo {
+width: 60px;
+height: 60px;
+            }
+h1 {
+width: 60px;
+font-size: 0.35rem;
+letter-spacing: 0.2px;
+margin-top: -6px;
+            }
+.menu-toggle {
+display: flex;
+            }
+.close-menu {
+display: block;
+            }
+nav {
+position: fixed;
+top: 0;
+right: -100%;
+height: 100vh;
+width: 250px;
+background: #ffffff;
+flex-direction: column;
+gap: 30px;
+padding: 80px 30px 30px;
+box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+transition: right 0.3s ease;
+z-index: 999;
+            }
+nav.active {
+right: 0;
+            }
+nav a {
+font-size: 1.1rem;
+            }
+nav a::after {
+display: none;
+            }
+.hero-section {
+padding: 60px 20px;
+            }
+.hero-section h2 {
+font-size: 2rem;
+letter-spacing: 1px;
+            }
+.hero-section p {
+font-size: 1.1rem;
+            }
+.coaches-container {
+gap: 60px;
+            }
+.coach-card {
+max-width: 350px;
+            }
+.coach-image {
+width: 160px;
+height: 160px;
+            }
+.gallery-item {
+width: 280px;
+height: 280px;
+            }
+.about-bjj h2,
+.gallery-section h2,
+.inclusive-section h2,
+.schedule-section h2,
+.contact-section h2 {
+font-size: 2rem;
+            }
+.schedule-grid {
+grid-template-columns: 1fr;
+            }
+.contact-grid {
+grid-template-columns: 1fr;
+            }
+.map-container {
+height: 300px;
+            }
+        }
+
+
+</style>
+</head>
+<body>
+<header>
+<div class="logo-container">
+<div class="logo">
+<img src="athlos.png" alt="Athlos Jiu-Jitsu Logo"> 
+</div>
+<h1>ATHLOS JIU-JITSU</h1>
+</div>
+<button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+<span></span>
+<span></span>
+<span></span>
+</button>
+<nav id="nav-menu">
+<button class="close-menu" onclick="toggleMenu()" aria-label="Close menu">×</button>
+<a href="#home">Home</a>
+<a href="#coaches">Coaches</a>
+<a href="#schedule">Schedule</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<section class="hero-section fade-in" id="home">
+<h2>Train with Champions</h2>
+<p>Experience world-class Brazilian Jiu-Jitsu training in the heart of Paphos</p>
+<a href="#contact" class="cta-button">Start Your Journey</a>
+</section>
+
+<section class="about-bjj fade-in">
+<h2 class="zoom-in">About Brazilian Jiu-Jitsu</h2>
+<p>
+            Brazilian Jiu-Jitsu is a martial art and combat sport that focuses on grappling and ground fighting. It emphasizes technique and leverage over strength, allowing smaller practitioners to defend themselves against larger opponents. More than just a physical discipline, BJJ builds mental resilience, problem-solving skills, and a supportive community. Whether you're looking to compete, get in shape, or learn self-defense, Brazilian Jiu-Jitsu offers a transformative journey for people of all ages and fitness levels.
+</p>
+</section>
+
+<section class="coaches-section fade-in" id="coaches">
+<div class="coaches-container">
+<div class="coach-card slide-left">
+<div class="coach-image">
+<img src="jose.jpg" alt="Jose Portillo - Black Belt Head Instructor">
+</div>
+<div class="coach-info">
+<h2 class="coach-name">Jose Portillo</h2>
+<p class="coach-title">Black Belt | Head Instructor</p>
+<p class="coach-description">
+                        With over 15 years of experience in Brazilian Jiu-Jitsu, our head coach has trained champions and dedicated their life to the art. Specializing in competition strategy and fundamental techniques.
+</p>
+</div>
+</div>
+<div class="coach-card slide-right">
+<div class="coach-image">
+<img src="fernando.jpg" alt="Fernando Koupparis - Black Belt Head Instructor">
+</div>
+<div class="coach-info">
+<h2 class="coach-name">Fernando Koupparis</h2>
+<p class="coach-title">Black Belt | Head Instructor</p>
+<p class="coach-description">
+                        A passionate instructor focused on building strong fundamentals and confidence in students of all levels. Known for patient teaching and creating a welcoming environment for beginners.
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="schedule-section fade-in" id="schedule">
+<h2 class="zoom-in">Class Schedule</h2>
+<div class="schedule-grid">
+<div class="schedule-card slide-left">
+<div class="schedule-day">Kids</div>
+<div class="schedule-time">Monday & Wednesday</div>
+<div class="schedule-time">16:00 - 17:00</div>
+</div>
+<div class="schedule-card slide-left">
+<div class="schedule-day">Juniors</div>
+<div class="schedule-time">Mon, Wed, Fri: 17:00 - 18:00</div>
+<div class="schedule-class">GI</div>
+<div class="schedule-time">Tue & Thu: 16:30 - 17:30</div>
+<div class="schedule-class">NO-GI</div>
+</div>
+<div class="schedule-card slide-right">
+<div class="schedule-day">Teens</div>
+<div class="schedule-time">Tuesday & Thursday</div>
+<div class="schedule-time">17:30 - 18:30</div>
+<div class="schedule-class">NO-GI</div>
+</div>
+<div class="schedule-card slide-right">
+<div class="schedule-day">Adults Morning</div>
+<div class="schedule-time">Monday to Friday: 8:00 - 9:00</div>
+<div class="schedule-class">Mon, Wed, Fri: NO-GI</div>
+<div class="schedule-class">Tue & Thu: GI</div>
+</div>
+<div class="schedule-card zoom-in">
+<div class="schedule-day">Adults Evening</div>
+<div class="schedule-time">Mon to Thu: 19:00 - 20:00</div>
+<div class="schedule-class">Mon & Wed: GI</div>
+<div class="schedule-class">Tue & Thu: NO-GI</div>
+<div class="schedule-time" style="margin-top: 15px;">Friday: 19:00 - 20:00</div>
+<div class="schedule-class">Open Mat (GI & NO-GI)</div>
+</div>
+</div>
+</section>
+
+<section class="gallery-section fade-in">
+<h2 class="zoom-in">Gallery</h2>
+<div class="gallery-container">
+<div class="gallery-item">
+<img src="gal11.jpg" alt="Training session at Athlos Jiu-Jitsu">
+</div>
+<div class="gallery-item">
+<img src="gal2.jpg" alt="BJJ techniques demonstration"> 
+</div>
+<div class="gallery-item">
+<img src="gal3.jpg" alt="Students practicing Brazilian Jiu-Jitsu"> 
+</div>
+<div class="gallery-item">
+<img src="gal4.jpg" alt="Jiu-Jitsu class in action"> 
+</div>
+<div class="gallery-item">
+<img src="gal5.jpg" alt="Athlos BJJ community training"> 
+</div>
+<!-- Duplicate images for seamless loop -->
+<div class="gallery-item">
+<img src="gal11.jpg" alt="Training session at Athlos Jiu-Jitsu"> 
+</div>
+<div class="gallery-item">
+<img src="gal2.jpg" alt="BJJ techniques demonstration"> 
+</div>
+<div class="gallery-item">
+<img src="gal3.jpg" alt="Students practicing Brazilian Jiu-Jitsu"> 
+</div>
+<div class="gallery-item">
+<img src="gal4.jpg" alt="Jiu-Jitsu class in action"> 
+</div>
+<div class="gallery-item">
+<img src="gal5.jpg" alt="Athlos BJJ community training"> 
+</div>
+</div>
+</section>
+
+<section class="inclusive-section fade-in">
+<h2 class="zoom-in">For Everyone</h2>
+<p>
+            Brazilian Jiu-Jitsu at Athlos welcomes everyone—women, men, and children alike. Our academy is a place where families train together and individuals of all backgrounds feel at home. With classes tailored to every skill level and fitness ability, we create an inclusive environment where everyone can thrive, build confidence, and discover their potential on the mats.
+</p>
+</section>
+
+<section class="contact-section fade-in" id="contact">
+<h2 class="zoom-in">Get In Touch</h2>
+<div class="contact-grid">
+<div class="contact-card slide-left">
+<div class="contact-icon">📞</div>
+<h3>Call Us</h3>
+<p>Fernando: <a href="tel:+35799384180">+357 99 384180</a></p>
+<p>Ismini: <a href="tel:+35799530846">+357 99 530846</a></p>
+</div>
+<div class="contact-card zoom-in">
+<div class="contact-icon">📍</div>
+<h3>Visit Us</h3>
+<p><a href="https://maps.app.goo.gl/Pn5eP9wPBbigQsyZ8" target="_blank" rel="noopener">Makariou III Ave 23<br>Paphos 8221, Cyprus</a></p>
+</div>
+<div class="contact-card slide-right">
+<div class="contact-icon">⏰</div>
+<h3>Training Times</h3>
+<p>Mon/Wed/Fri: 18:00-19:30</p>
+<p>Saturday: 10:00-11:30</p>
+</div>
+</div>
+<div class="map-container fade-in">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3276.5282950626497!2d32.417131176072196!3d34.79264847288727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14e707668a1c49fd%3A0xf93d98f72e7888a1!2sAthlos%20Brazilian%20Jiu-Jitsu!5e0!3m2!1sen!2s!4v1763110893556!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+</section>
+
+<footer>
+<p>&copy; 2025 Athlos Jiu-Jitsu. All rights reserved.</p>
+
+<p><a href="https://terkowebs.com" target="_blank">Website designed & developed by TerkoWebs</a></p>
+
+
+<div class="social-links">
+<!-- Add your social media links here -->
+
+ <a href="https://www.instagram.com/athlos_jiujitsu/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a> 
+</div>
+</footer>
+
+<script>
+function toggleMenu() {
+const nav = document.getElementById('nav-menu');
+const menuToggle = document.querySelector('.menu-toggle');
+const body = document.body;
+nav.classList.toggle('active');
+menuToggle.classList.toggle('active');
+            
+if (nav.classList.contains('active')) {
+body.style.overflow = 'hidden';
+            } else {
+body.style.overflow = 'auto';
+            }
+        }
+
+// Close menu when clicking on a link
+document.querySelectorAll('nav a').forEach(link => {
+link.addEventListener('click', () => {
+const nav = document.getElementById('nav-menu');
+const menuToggle = document.querySelector('.menu-toggle');
+const body = document.body;
+nav.classList.remove('active');
+menuToggle.classList.remove('active');
+body.style.overflow = 'auto';
+            });
+        });
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e) {
+e.preventDefault();
+const target = document.querySelector(this.getAttribute('href'));
+if (target) {
+const headerOffset = 100;
+const elementPosition = target.getBoundingClientRect().top;
+const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+window.scrollTo({
+top: offsetPosition,
+behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+// Scroll Animation
+const observerOptions = {
+threshold: 0.1,
+rootMargin: '0px 0px -50px 0px'
+        };
+
+const observer = new IntersectionObserver(function(entries) {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+// Observe all animated elements when page loads
+window.addEventListener('DOMContentLoaded', () => {
+const animatedElements = document.querySelectorAll('.fade-in, .slide-left, .slide-right, .zoom-in');
+animatedElements.forEach(el => observer.observe(el));
+        });
+</script>
+</body>
+</html>
